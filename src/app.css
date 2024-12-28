@@ -1,54 +1,301 @@
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f5f7;
-}
-
-.App {
-  text-align: center;
-  padding: 20px;
-}
-
-.App-header {
-  background-color: #0079bf;
-  color: white;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-
+/* app.css */
 .kanban-board {
+  padding: 1.5rem;
+  background-color: #111827;
+  min-height: 100vh;
+}
+
+.board-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #f3f4f6;
+}
+
+.columns-container {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.column {
+  flex-shrink: 0;
+  width: 20rem;
+}
+
+.column-card {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.column-header {
+  background-color: #1f2937;
+  border-bottom: 1px solid #374151;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column-title {
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-count {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.add-button {
+  padding: 0.25rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #374151;
+}
+
+.column-content {
+  padding: 0.5rem;
+}
+
+.new-task-form {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #374151;
+  border-radius: 0.5rem;
+}
+
+.task-input {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #4b5563;
+  border-radius: 0.25rem;
+  resize: none;
+}
+
+.task-input:focus {
+  outline: none;
+  --tw-ring-color: #f97316;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cancel-button {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  color: #d1d5db;
+  border-radius: 0.25rem;
+}
+
+.cancel-button:hover {
+  background-color: #4b5563;
+}
+
+.add-task-button {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  background-color: #f97316;
+  color: white;
+  border-radius: 0.25rem;
+}
+
+.add-task-button:hover {
+  background-color: #ea580c;
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-card {
+  padding: 0.75rem;
+  background-color: #374151;
+  border-radius: 0.5rem;
+  border: 1px solid #4b5563;
+  cursor: move;
+  transition: box-shadow 0.2s;
+}
+
+.task-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 0.5rem;
 }
 
-.kanban-column {
-  background-color: #ebecf0;
-  padding: 10px;
-  border-radius: 8px;
-  min-width: 250px;
-  max-width: 300px;
-  height: 500px;
-  overflow-y: auto;
+.task-content {
+  color: #f3f4f6;
 }
 
-.kanban-column h2 {
-  text-align: center;
-  color: #333;
+.delete-button {
+  color: #9ca3af;
 }
 
-.kanban-column-content {
-  padding: 10px;
+.delete-button:hover {
+  color: #ef4444;
 }
 
-.kanban-item {
-  background-color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  font-size: 14px;
+.task-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.assignee-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #d1d5db;
+  margin-bottom: 0.5rem;
+}
+
+.bounty-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.bounty-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #fb923c;
+}
+
+.update-bounty-button {
+  font-size: 0.875rem;
+  color: #f97316;
+}
+
+.update-bounty-button:hover {
+  color: #fb923c;
+}
+
+.update-requested {
+  font-size: 0.875rem;
+  color: #facc15;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.edit-form {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.email-input,
+.bounty-input {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #4b5563;
+  border-radius: 0.25rem;
+}
+
+.email-input:focus,
+.bounty-input:focus {
+  outline: none;
+  --tw-ring-color: #f97316;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.cancel-edit-button {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  color: #d1d5db;
+  border-radius: 0.25rem;
+}
+
+.cancel-edit-button:hover {
+  background-color: #4b5563;
+}
+
+.assign-button {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  background-color: #f97316;
+  color: white;
+  border-radius: 0.25rem;
+}
+
+.assign-button:hover {
+  background-color: #ea580c;
+}
+
+.assign-task-button {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #f97316;
+}
+
+.assign-task-button:hover {
+  color: #fb923c;
+}
+
+.accept-button {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.25rem;
+  background-color: #22c55e;
+  color: white;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.accept-button:hover {
+  background-color: #16a34a;
 }
